@@ -1,0 +1,14 @@
+.branches
+.temp
+snippets
+*.log
+*.env
+*.env.local
+*.env.development
+*.env.production
+*.env.test
+.DS_Store
+node_modules/
+dist/
+build/
+coverage/

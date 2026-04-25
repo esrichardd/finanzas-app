@@ -1,0 +1,155 @@
+erDiagram
+    auth_users ||--|| profiles : "extiende"
+    profiles }o--|| countries : "país nacimiento"
+    profiles }o--|| countries : "país residencia"
+    profiles }o--|| occupations : "ocupación"
+    profiles }o--|| currencies : "moneda principal"
+
+    profiles ||--o{ accounts : "posee"
+    profiles ||--o{ crypto_holdings : "posee"
+    profiles ||--o{ transactions : "registra"
+    profiles ||--o{ categories : "crea (custom)"
+    profiles ||--o{ tags : "crea"
+
+    accounts }o--|| currencies : "denominada en"
+    accounts }o--|| account_types : "tipo"
+    accounts }o--|| financial_institutions : "institución (opcional)"
+
+    crypto_holdings }o--|| crypto_assets : "activo"
+
+    transactions ||--|{ transaction_entries : "compone"
+    transactions }o--|| categories : "clasifica"
+    transactions }o--o{ transaction_tags : "etiqueta"
+    transactions }o--|| exchange_rates : "tasa usada (opcional)"
+
+    transaction_entries }o--o| accounts : "afecta cuenta fiat"
+    transaction_entries }o--o| crypto_holdings : "afecta cuenta cripto"
+    transaction_entries }o--|| currencies : "valor en moneda"
+
+    tags ||--o{ transaction_tags : ""
+    transactions ||--o{ transaction_tags : ""
+
+    categories ||--o{ categories : "subcategoría"
+
+    countries {
+        char_2 code PK
+        text name_es
+        text name_en
+    }
+    currencies {
+        char_3 code PK
+        text name
+        smallint decimals
+        boolean is_crypto
+    }
+    crypto_assets {
+        text symbol PK
+        text name
+        smallint decimals
+    }
+    occupations {
+        uuid id PK
+        text name_es
+        text name_en
+    }
+    account_types {
+        text code PK
+        text name
+    }
+    financial_institutions {
+        uuid id PK
+        text name
+        char_2 country_code FK
+    }
+    profiles {
+        uuid id PK_FK
+        text first_name
+        text last_name
+        date birth_date
+        char_2 birth_country_code FK
+        char_2 residence_country_code FK
+        gender_enum gender
+        contract_type_enum contract_type
+        uuid occupation_id FK
+        char_2 language_code
+        char_3 primary_currency_code FK
+        theme_enum theme
+        timestamptz created_at
+        timestamptz updated_at
+    }
+    accounts {
+        uuid id PK
+        uuid user_id FK
+        text name
+        text account_type_code FK
+        char_3 currency_code FK
+        uuid institution_id FK
+        numeric initial_balance
+        boolean is_archived
+        timestamptz created_at
+        timestamptz updated_at
+        timestamptz deleted_at
+    }
+    crypto_holdings {
+        uuid id PK
+        uuid user_id FK
+        text name
+        text crypto_symbol FK
+        text wallet_address
+        timestamptz created_at
+        timestamptz updated_at
+        timestamptz deleted_at
+    }
+    categories {
+        uuid id PK
+        uuid user_id FK_nullable
+        uuid parent_id FK_nullable
+        text name
+        text icon
+        text color
+        category_kind_enum kind
+        boolean is_system
+        timestamptz created_at
+    }
+    tags {
+        uuid id PK
+        uuid user_id FK
+        text name
+    }
+    transactions {
+        uuid id PK
+        uuid user_id FK
+        transaction_type_enum type
+        timestamptz occurred_at
+        uuid category_id FK_nullable
+        text description
+        numeric fx_rate
+        char_3 fx_from_currency
+        char_3 fx_to_currency
+        timestamptz created_at
+        timestamptz updated_at
+        timestamptz deleted_at
+    }
+    transaction_entries {
+        uuid id PK
+        uuid transaction_id FK
+        entry_direction_enum direction
+        entry_role_enum role
+        uuid account_id FK_nullable
+        uuid crypto_holding_id FK_nullable
+        numeric amount
+        char_3 currency_code FK
+        boolean is_fee
+    }
+    transaction_tags {
+        uuid transaction_id FK
+        uuid tag_id FK
+    }
+    exchange_rates {
+        uuid id PK
+        char_3 from_currency FK
+        char_3 to_currency FK
+        numeric rate
+        timestamptz observed_at
+        text source
+    }
