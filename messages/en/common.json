@@ -1,0 +1,10 @@
+{
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "loading": "Loading...",
+    "error": {
+        "generic": "Something went wrong",
+        "notFound": "Not found"
+    }
+}
