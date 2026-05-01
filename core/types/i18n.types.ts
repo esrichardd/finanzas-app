@@ -3,12 +3,13 @@
 import type es_common from "../../messages/es/common.json";
 import type es_auth from "../../messages/es/auth.json";
 import type es_landing from "../../messages/es/landing.json";
+import type es_dashboard from "../../messages/es/dashboard.json";
 
 export type Messages = {
   common: typeof es_common;
   auth: typeof es_auth;
   landing: typeof es_landing;
-  // ... resto de namespaces
+  dashboard: typeof es_dashboard;
 };
 
 // En global.d.ts en la raíz del proyecto:

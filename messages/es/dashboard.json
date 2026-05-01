@@ -1,0 +1,51 @@
+{
+  "quickActions": {
+    "greeting": "Hola, {name}",
+    "income": "+ Ingreso",
+    "expense": "+ Gasto",
+    "transfer": "+ Transferencia",
+    "crypto": "+ Cripto"
+  },
+  "kpi": {
+    "netWorth": "Patrimonio total",
+    "monthIncome": "Ingresos del mes",
+    "monthExpenses": "Gastos del mes",
+    "monthFees": "Comisiones del mes",
+    "vsPrevMonth": "vs. mes ant."
+  },
+  "fiatAccounts": {
+    "title": "Cuentas Fiat"
+  },
+  "cryptoHoldings": {
+    "title": "Holdings Cripto"
+  },
+  "expenseDonut": {
+    "title": "Gasto por Categoría"
+  },
+  "cashflow": {
+    "title": "Cashflow — Últimos 6 meses",
+    "income": "Ingresos",
+    "expenses": "Gastos"
+  },
+  "transactions": {
+    "title": "Transacciones Recientes",
+    "date": "Fecha",
+    "description": "Descripción",
+    "category": "Categoría",
+    "amount": "Importe"
+  },
+  "onboarding": {
+    "title": "Completa tu perfil para empezar",
+    "body": "Agrega tu primera cuenta para comenzar a ver tu patrimonio en tiempo real.",
+    "cta": "Agregar cuenta"
+  },
+  "topbar": {
+    "profile": "Mi perfil",
+    "settings": "Configuración",
+    "logout": "Cerrar sesión"
+  },
+  "nav": {
+    "collapse": "Colapsar",
+    "settings": "Configuración"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "quickActions": {
+    "greeting": "Hello, {name}",
+    "income": "+ Income",
+    "expense": "+ Expense",
+    "transfer": "+ Transfer",
+    "crypto": "+ Crypto"
+  },
+  "kpi": {
+    "netWorth": "Net Worth",
+    "monthIncome": "Monthly Income",
+    "monthExpenses": "Monthly Expenses",
+    "monthFees": "Monthly Fees",
+    "vsPrevMonth": "vs. last mo."
+  },
+  "fiatAccounts": {
+    "title": "Fiat Accounts"
+  },
+  "cryptoHoldings": {
+    "title": "Crypto Holdings"
+  },
+  "expenseDonut": {
+    "title": "Expense by Category"
+  },
+  "cashflow": {
+    "title": "Cashflow — Last 6 Months",
+    "income": "Income",
+    "expenses": "Expenses"
+  },
+  "transactions": {
+    "title": "Recent Transactions",
+    "date": "Date",
+    "description": "Description",
+    "category": "Category",
+    "amount": "Amount"
+  },
+  "onboarding": {
+    "title": "Complete your profile to get started",
+    "body": "Add your first account to start tracking your net worth in real time.",
+    "cta": "Add account"
+  },
+  "topbar": {
+    "profile": "My profile",
+    "settings": "Settings",
+    "logout": "Sign out"
+  },
+  "nav": {
+    "collapse": "Collapse",
+    "settings": "Settings"
+  }
+}
