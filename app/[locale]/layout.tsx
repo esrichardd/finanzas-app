@@ -42,7 +42,10 @@ export default async function RootLayout({ children, params }: Props) {
       suppressHydrationWarning
       className={`${inter.variable} ${ibmPlexMono.variable} bg-background h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body
+        className="min-h-full flex flex-col"
+        suppressHydrationWarning
+      >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <NextIntlClientProvider messages={messages}>
             {children}
