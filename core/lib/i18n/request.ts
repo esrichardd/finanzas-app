@@ -14,9 +14,10 @@ export default getRequestConfig(async ({ requestLocale }) => {
   }
 
   // Carga cada archivo de mensajes del locale activo
-  const [common, auth] = await Promise.all([
+  const [common, auth, landing] = await Promise.all([
     import(`../../../messages/${locale}/common.json`),
     import(`../../../messages/${locale}/auth.json`),
+    import(`../../../messages/${locale}/landing.json`),
   ]);
 
   return {
@@ -24,6 +25,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     messages: {
       common: common.default,
       auth: auth.default,
+      landing: landing.default,
     },
   };
 });

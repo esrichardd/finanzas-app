@@ -2,10 +2,12 @@
 // el plugin de TypeScript, pero la forma manual también funciona
 import type es_common from "../../messages/es/common.json";
 import type es_auth from "../../messages/es/auth.json";
+import type es_landing from "../../messages/es/landing.json";
 
 export type Messages = {
   common: typeof es_common;
   auth: typeof es_auth;
+  landing: typeof es_landing;
   // ... resto de namespaces
 };
 

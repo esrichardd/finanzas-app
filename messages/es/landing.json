@@ -1,0 +1,33 @@
+{
+  "logo": "FINTRACK",
+  "hero": {
+    "title": "Tomá el control de tu dinero",
+    "subtitle": "Fintrack te ayuda a registrar cada movimiento, controlar tus gastos y alcanzar tus metas financieras — sin sufrir con planillas.",
+    "signUp": "Crear cuenta gratis",
+    "signIn": "Iniciar sesión"
+  },
+  "features": {
+    "headline": "Todo lo que necesitás, en un solo lugar",
+    "subtitle": "Las herramientas para entender y gestionar tu dinero, sin complicaciones.",
+    "incomeTracking": {
+      "label": "Seguimiento de Ingresos",
+      "desc": "Monitoreá todas tus fuentes de ingreso en tiempo real."
+    },
+    "expenseControl": {
+      "label": "Control de Gastos",
+      "desc": "Categorizá y controlá cada gasto al detalle."
+    },
+    "financialReports": {
+      "label": "Reportes Financieros",
+      "desc": "Visualizá tu salud financiera con gráficos y métricas."
+    },
+    "multiCurrency": {
+      "label": "Multi-Divisa",
+      "desc": "Operá en cualquier moneda, en cualquier lugar."
+    }
+  },
+  "footer": {
+    "tagline": "Finanzas inteligentes · Construidas simples",
+    "rights": "© 2026 Fintrack. Todos los derechos reservados."
+  }
+}
