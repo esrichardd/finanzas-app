@@ -14,12 +14,13 @@ export default getRequestConfig(async ({ requestLocale }) => {
   }
 
   // Carga cada archivo de mensajes del locale activo
-  const [common, auth, landing, dashboard, transactions] = await Promise.all([
+  const [common, auth, landing, dashboard, transactions, accounts] = await Promise.all([
     import(`../../../messages/${locale}/common.json`),
     import(`../../../messages/${locale}/auth.json`),
     import(`../../../messages/${locale}/landing.json`),
     import(`../../../messages/${locale}/dashboard.json`),
     import(`../../../messages/${locale}/transactions.json`),
+    import(`../../../messages/${locale}/accounts.json`),
   ]);
 
   return {
@@ -30,6 +31,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
       landing: landing.default,
       dashboard: dashboard.default,
       transactions: transactions.default,
+      accounts: accounts.default,
     },
   };
 });

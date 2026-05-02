@@ -1,0 +1,42 @@
+{
+  "title": "Cuentas",
+  "newAccount": "Nueva Cuenta",
+  "totalIn": "Total en {currency}",
+  "viewTransactions": "Ver transacciones",
+  "noAccounts": "Sin cuentas aún.",
+  "noAccountsHint": "Agrega tu primera cuenta para comenzar a registrar tus finanzas.",
+  "form": {
+    "titleCreate": "Nueva Cuenta",
+    "titleEdit": "Editar Cuenta",
+    "name": "Nombre",
+    "namePlaceholder": "Ej. BBVA Cuenta",
+    "type": "Tipo",
+    "selectType": "Seleccionar tipo",
+    "currency": "Moneda",
+    "initialBalance": "Saldo inicial",
+    "notes": "Notas",
+    "notesPlaceholder": "Notas opcionales…",
+    "save": "Guardar",
+    "saving": "Guardando…",
+    "cancel": "Cancelar",
+    "delete": "Eliminar cuenta",
+    "deleteConfirmTitle": "¿Eliminar cuenta?",
+    "deleteConfirmBody": "La cuenta y todos sus datos serán archivados. Esta acción no se puede deshacer.",
+    "deleteConfirm": "Sí, eliminar",
+    "deleteCancel": "Volver",
+    "errorRequired": "Nombre, tipo y moneda son obligatorios.",
+    "errorSave": "Error al guardar. Intenta de nuevo."
+  },
+  "types": {
+    "bank_account": "Cuenta bancaria",
+    "digital_wallet": "Billetera digital",
+    "cash": "Efectivo",
+    "credit_card": "Tarjeta de crédito",
+    "savings": "Cuenta de ahorro",
+    "investment": "Inversión",
+    "brokerage": "Cuenta de corretaje",
+    "prepaid_card": "Tarjeta prepagada",
+    "crypto_exchange": "Exchange de cripto",
+    "loan": "Préstamo"
+  }
+}

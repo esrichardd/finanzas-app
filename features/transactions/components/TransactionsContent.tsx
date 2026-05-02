@@ -22,6 +22,7 @@ interface TransactionsContentProps {
   accounts: string[];
   formAccounts: FormAccount[];
   formCategories: FormCategory[];
+  initialAccount?: string;
 }
 
 export function TransactionsContent({
@@ -29,10 +30,14 @@ export function TransactionsContent({
   accounts,
   formAccounts,
   formCategories,
+  initialAccount,
 }: TransactionsContentProps) {
   const t = useTranslations("transactions");
   const router = useRouter();
-  const [filters, setFilters] = useState<TxFilters>(DEFAULT_FILTERS);
+  const [filters, setFilters] = useState<TxFilters>({
+    ...DEFAULT_FILTERS,
+    account: initialAccount ?? DEFAULT_FILTERS.account,
+  });
   const [page, setPage] = useState(1);
   const [modalOpen, setModalOpen] = useState(false);
   const [editTx, setEditTx] = useState<Transaction | null>(null);

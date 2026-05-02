@@ -6,11 +6,16 @@ import {
   getCategoriesForForm,
 } from "@/features/transactions/lib/queries";
 
-export default async function TransactionsPage() {
+export default async function TransactionsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ account?: string }>;
+}) {
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
+  const { account: initialAccount } = await searchParams;
 
   const [transactions, formAccounts, formCategories] = user
     ? await Promise.all([
@@ -30,6 +35,7 @@ export default async function TransactionsPage() {
       accounts={accounts}
       formAccounts={formAccounts}
       formCategories={formCategories}
+      initialAccount={initialAccount}
     />
   );
 }

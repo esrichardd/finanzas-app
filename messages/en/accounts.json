@@ -1,0 +1,42 @@
+{
+  "title": "Accounts",
+  "newAccount": "New Account",
+  "totalIn": "Total in {currency}",
+  "viewTransactions": "View transactions",
+  "noAccounts": "No accounts yet.",
+  "noAccountsHint": "Add your first account to start tracking your finances.",
+  "form": {
+    "titleCreate": "New Account",
+    "titleEdit": "Edit Account",
+    "name": "Name",
+    "namePlaceholder": "e.g. Chase Checking",
+    "type": "Type",
+    "selectType": "Select type",
+    "currency": "Currency",
+    "initialBalance": "Initial Balance",
+    "notes": "Notes",
+    "notesPlaceholder": "Optional notes…",
+    "save": "Save",
+    "saving": "Saving…",
+    "cancel": "Cancel",
+    "delete": "Delete account",
+    "deleteConfirmTitle": "Delete account?",
+    "deleteConfirmBody": "The account and all its data will be archived. This cannot be undone.",
+    "deleteConfirm": "Yes, delete",
+    "deleteCancel": "Go back",
+    "errorRequired": "Name, type and currency are required.",
+    "errorSave": "Failed to save. Please try again."
+  },
+  "types": {
+    "bank_account": "Bank account",
+    "digital_wallet": "Digital wallet",
+    "cash": "Cash",
+    "credit_card": "Credit card",
+    "savings": "Savings account",
+    "investment": "Investment",
+    "brokerage": "Brokerage account",
+    "prepaid_card": "Prepaid card",
+    "crypto_exchange": "Crypto exchange",
+    "loan": "Loan"
+  }
+}
