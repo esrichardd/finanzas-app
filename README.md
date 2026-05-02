@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fintrack
 
-## Getting Started
+Personal finance tracker with multi-currency support, double-entry accounting, and crypto holdings. Built with Next.js App Router and Supabase.
 
-First, run the development server:
+![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
+![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E?logo=supabase)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38BDF8?logo=tailwindcss)
+
+## Requirements
+
+- Node.js 20+
+- [Supabase CLI](https://supabase.com/docs/guides/cli) (`brew install supabase/tap/supabase`)
+- Docker (required by Supabase CLI for local dev)
+
+## Local Setup
 
 ```bash
+# 1. Install dependencies
+npm install
+
+# 2. Start local Supabase (runs migrations + seed automatically)
+supabase start
+
+# 3. Values are already set in .env.local for local dev — no changes needed
+
+# 4. Start the dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variable | Description |
+|---|---|
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase API URL (local: `http://localhost:54321`) |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Public anon key |
+| `SUPABASE_SERVICE_ROLE_KEY` | Service role key (server-only, never exposed to browser) |
 
-## Learn More
+## Local Services
 
-To learn more about Next.js, take a look at the following resources:
+| Service | URL |
+|---|---|
+| App | http://localhost:3000 |
+| Supabase Studio | http://localhost:54323 |
+| Supabase API | http://localhost:54321 |
+| Inbucket (email) | http://localhost:54324 |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Test Users
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+All users have password `testpassword123`.
 
-## Deploy on Vercel
+| Email | Profile | Currency |
+|---|---|---|
+| `ana@example.com` | Freelance, Colombia | COP |
+| `carlos@example.com` | Salaried, USA | USD |
+| `sofia@example.com` | Crypto-heavy, Argentina | ARS |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Useful Commands
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+# Re-seed the database (wipes data and re-runs migrations + seed.sql)
+supabase db reset
+
+# Type-check without building
+npx tsc --noEmit
+
+# Lint
+npm run lint
+
+# Stop local Supabase
+supabase stop
+```
+
+## Architecture
+
+See [ARCHITECTURE.md](./ARCHITECTURE.md) for folder structure, conventions, and data flow patterns.
