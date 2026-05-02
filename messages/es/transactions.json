@@ -1,0 +1,60 @@
+{
+  "title": "Transacciones",
+  "newTransaction": "Nueva Transacción",
+  "filters": {
+    "search": "Buscar transacciones…",
+    "allTypes": "Todos los tipos",
+    "allAccounts": "Todas las cuentas",
+    "from": "Desde",
+    "to": "Hasta",
+    "clearFilters": "Limpiar filtros"
+  },
+  "types": {
+    "income": "Ingreso",
+    "expense": "Gasto",
+    "transfer": "Transferencia",
+    "crypto": "Cripto"
+  },
+  "summary": {
+    "income": "Ingresos",
+    "expenses": "Gastos",
+    "net": "Neto"
+  },
+  "table": {
+    "date": "Fecha",
+    "description": "Descripción",
+    "category": "Categoría",
+    "account": "Cuenta",
+    "amount": "Importe",
+    "noResults": "No se encontraron transacciones.",
+    "noResultsHint": "Intenta ajustar los filtros."
+  },
+  "pagination": {
+    "prev": "Anterior",
+    "next": "Siguiente",
+    "showing": "Mostrando {from}–{to} de {total}"
+  },
+  "form": {
+    "titleCreate": "Nueva Transacción",
+    "titleEdit": "Editar Transacción",
+    "type": "Tipo",
+    "date": "Fecha",
+    "description": "Descripción",
+    "amount": "Importe",
+    "currency": "Moneda",
+    "category": "Categoría",
+    "account": "Cuenta",
+    "selectCategory": "Seleccionar categoría",
+    "selectAccount": "Seleccionar cuenta",
+    "save": "Guardar",
+    "saving": "Guardando…",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "deleteConfirmTitle": "¿Eliminar transacción?",
+    "deleteConfirmBody": "Esta acción no se puede deshacer.",
+    "deleteConfirm": "Sí, eliminar",
+    "deleteCancel": "Volver",
+    "errorRequired": "Por favor completa todos los campos requeridos.",
+    "errorSave": "Error al guardar. Intenta de nuevo."
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "title": "Transactions",
+  "newTransaction": "New Transaction",
+  "filters": {
+    "search": "Search transactions…",
+    "allTypes": "All types",
+    "allAccounts": "All accounts",
+    "from": "From",
+    "to": "To",
+    "clearFilters": "Clear filters"
+  },
+  "types": {
+    "income": "Income",
+    "expense": "Expense",
+    "transfer": "Transfer",
+    "crypto": "Crypto"
+  },
+  "summary": {
+    "income": "Income",
+    "expenses": "Expenses",
+    "net": "Net"
+  },
+  "table": {
+    "date": "Date",
+    "description": "Description",
+    "category": "Category",
+    "account": "Account",
+    "amount": "Amount",
+    "noResults": "No transactions found.",
+    "noResultsHint": "Try adjusting your filters."
+  },
+  "pagination": {
+    "prev": "Previous",
+    "next": "Next",
+    "showing": "Showing {from}–{to} of {total}"
+  },
+  "form": {
+    "titleCreate": "New Transaction",
+    "titleEdit": "Edit Transaction",
+    "type": "Type",
+    "date": "Date",
+    "description": "Description",
+    "amount": "Amount",
+    "currency": "Currency",
+    "category": "Category",
+    "account": "Account",
+    "selectCategory": "Select category",
+    "selectAccount": "Select account",
+    "save": "Save",
+    "saving": "Saving…",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "deleteConfirmTitle": "Delete transaction?",
+    "deleteConfirmBody": "This action cannot be undone.",
+    "deleteConfirm": "Yes, delete",
+    "deleteCancel": "Go back",
+    "errorRequired": "Please fill in all required fields.",
+    "errorSave": "Failed to save. Please try again."
+  }
+}

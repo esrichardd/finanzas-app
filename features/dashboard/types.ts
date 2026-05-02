@@ -45,9 +45,12 @@ export interface Transaction {
   date: string; // ISO: YYYY-MM-DD
   description: string;
   category: string;
+  categoryId?: string;
   amount: number; // positivo = ingreso, negativo = egreso
   currency: string;
   type: TxType;
+  account?: string;
+  accountId?: string;
 }
 
 export interface NavItem {
