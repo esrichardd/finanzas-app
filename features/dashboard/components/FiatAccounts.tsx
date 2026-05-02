@@ -2,14 +2,10 @@
 
 import { Wallet } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { Skeleton } from "@/core/components/ui/skeleton";
-import {
-  FIAT_ACCOUNTS,
-  type FiatAccount,
-} from "@/features/dashboard/lib/mock-data";
+import type { FiatAccount } from "@/features/dashboard/types";
 
 interface FiatAccountsProps {
-  loading?: boolean;
+  accounts: FiatAccount[];
 }
 
 function groupByCurrency(
@@ -22,24 +18,10 @@ function groupByCurrency(
   }, {});
 }
 
-export function FiatAccounts({ loading }: FiatAccountsProps) {
+export function FiatAccounts({ accounts }: FiatAccountsProps) {
   const t = useTranslations("dashboard.fiatAccounts");
 
-  if (loading) {
-    return (
-      <div className="bg-card border border-border p-4 flex flex-col gap-3">
-        <Skeleton className="h-3 w-28" />
-        {[1, 2, 3].map((i) => (
-          <div key={i} className="flex justify-between">
-            <Skeleton className="h-3 w-32" />
-            <Skeleton className="h-3 w-20" />
-          </div>
-        ))}
-      </div>
-    );
-  }
-
-  const grouped = groupByCurrency(FIAT_ACCOUNTS);
+  const grouped = groupByCurrency(accounts);
 
   return (
     <div className="bg-card border border-border p-4 flex flex-col gap-3">

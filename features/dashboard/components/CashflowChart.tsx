@@ -11,11 +11,10 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { useTranslations } from "next-intl";
-import { Skeleton } from "@/core/components/ui/skeleton";
-import { CASHFLOW_DATA } from "@/features/dashboard/lib/mock-data";
+import type { CashflowEntry } from "@/features/dashboard/types";
 
 interface CashflowChartProps {
-  loading?: boolean;
+  data: CashflowEntry[];
 }
 
 const AXIS_TICK_STYLE = {
@@ -32,17 +31,8 @@ const TOOLTIP_STYLE = {
   fontFamily: "var(--font-ibm-plex-mono)",
 };
 
-export function CashflowChart({ loading }: CashflowChartProps) {
+export function CashflowChart({ data }: CashflowChartProps) {
   const t = useTranslations("dashboard.cashflow");
-
-  if (loading) {
-    return (
-      <div className="bg-card border border-border p-4 flex flex-col gap-3">
-        <Skeleton className="h-3 w-44" />
-        <Skeleton className="h-48 w-full" />
-      </div>
-    );
-  }
 
   return (
     <div className="bg-card border border-border p-4 flex flex-col gap-3">
@@ -50,7 +40,7 @@ export function CashflowChart({ loading }: CashflowChartProps) {
         {t("title")}
       </p>
       <ResponsiveContainer width="100%" height={220}>
-        <BarChart data={CASHFLOW_DATA} barCategoryGap="30%" barGap={2}>
+        <BarChart data={data} barCategoryGap="30%" barGap={2}>
           <CartesianGrid
             vertical={false}
             stroke="var(--border)"

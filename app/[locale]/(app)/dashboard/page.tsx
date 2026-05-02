@@ -2,6 +2,14 @@ import { redirect } from "next/navigation";
 import { getLocale } from "next-intl/server";
 import { createClient } from "@/core/lib/supabase/server";
 import { DashboardContent } from "@/features/dashboard/components/DashboardContent";
+import {
+  getKpiData,
+  getFiatAccounts,
+  getCryptoHoldings,
+  getExpenseCategories,
+  getCashflowData,
+  getRecentTransactions,
+} from "@/features/dashboard/lib/queries";
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -14,8 +22,27 @@ export default async function DashboardPage() {
     redirect(`/${locale}/login`);
   }
 
-  // Usamos el email como fallback hasta tener perfil con display name
   const userName = user.email?.split("@")[0] ?? "there";
 
-  return <DashboardContent userName={userName} />;
+  const [kpiData, fiatAccounts, cryptoHoldings, expenseCategories, cashflowData, recentTransactions] =
+    await Promise.all([
+      getKpiData(user.id),
+      getFiatAccounts(user.id),
+      getCryptoHoldings(user.id),
+      getExpenseCategories(user.id),
+      getCashflowData(user.id),
+      getRecentTransactions(user.id),
+    ]);
+
+  return (
+    <DashboardContent
+      userName={userName}
+      kpiData={kpiData}
+      fiatAccounts={fiatAccounts}
+      cryptoHoldings={cryptoHoldings}
+      expenseCategories={expenseCategories}
+      cashflowData={cashflowData}
+      recentTransactions={recentTransactions}
+    />
+  );
 }

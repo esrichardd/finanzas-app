@@ -421,8 +421,8 @@ BEGIN
   -- =========================================================================
 
   -- Salario freelance mensual (cliente USA paga a Vita USD, ella convierte a COP)
-  -- 6 meses, primero llega USD, luego transferencia FX
-  FOR v_month IN 1..6 LOOP
+  -- 7 meses: mes actual (0) + 6 meses anteriores
+  FOR v_month IN 0..6 LOOP
     -- 1) Ingreso freelance en USD (cliente recurrente)
     v_tx_id := gen_random_uuid();
     INSERT INTO transactions (id, user_id, type, occurred_at, category_id, description)
@@ -573,8 +573,8 @@ BEGIN
   INSERT INTO transaction_entries (transaction_id, direction, role, account_id, amount, currency_code)
   VALUES (v_tx_id, 'credit', 'destination', acc_ana_bancol, 145000, 'COP');
 
-  -- Compra de cripto (DCA mensual los últimos 4 meses)
-  FOR v_month IN 1..4 LOOP
+  -- Compra de cripto (DCA mensual los últimos 4 meses + mes actual)
+  FOR v_month IN 0..4 LOOP
     v_tx_id := gen_random_uuid();
     v_rate := 62000 + (random() - 0.5) * 4000;
     INSERT INTO transactions (id, user_id, type, occurred_at, description, fx_rate, fx_from_currency, fx_to_currency)
@@ -654,7 +654,7 @@ BEGIN
   -- CARLOS: ~120 transacciones (salaried, USD)
   -- =========================================================================
 
-  FOR v_month IN 1..6 LOOP
+  FOR v_month IN 0..6 LOOP
     -- Salario quincenal (2 pagos al mes)
     FOR v_day IN 0..1 LOOP
       v_tx_id := gen_random_uuid();
@@ -803,7 +803,7 @@ BEGIN
   END LOOP;
 
   -- Gimnasio mensual
-  FOR v_month IN 1..6 LOOP
+  FOR v_month IN 0..6 LOOP
     v_tx_id := gen_random_uuid();
     INSERT INTO transactions (id, user_id, type, occurred_at, category_id, description)
     VALUES (v_tx_id, u_carlos, 'expense',
@@ -814,7 +814,7 @@ BEGIN
   END LOOP;
 
   -- Gastos kids (categoría custom)
-  FOR v_month IN 1..4 LOOP
+  FOR v_month IN 0..4 LOOP
     v_tx_id := gen_random_uuid();
     v_amount := 80 + (random() * 200)::int;
     INSERT INTO transactions (id, user_id, type, occurred_at, category_id, description)
@@ -833,7 +833,7 @@ BEGIN
   -- SOFIA: ~150 transacciones (crypto-heavy, ARS primary)
   -- =========================================================================
 
-  FOR v_month IN 1..6 LOOP
+  FOR v_month IN 0..6 LOOP
     -- Ingresos freelance (variable, ARS)
     v_tx_id := gen_random_uuid();
     v_amount := 800000 + (random() * 1500000)::int;
@@ -952,7 +952,7 @@ BEGIN
   END LOOP;
 
   -- Trading activo de Sofia: muchas compras y ventas de cripto
-  FOR v_month IN 1..6 LOOP
+  FOR v_month IN 0..6 LOOP
     -- Compra BTC desde USDT
     v_tx_id := gen_random_uuid();
     v_rate := 62000 + (random() - 0.5) * 5000;
@@ -1025,7 +1025,7 @@ BEGIN
     (v_tx_id, 'credit', 'destination', ch_sof_matic, 150.0/0.75,     'MATIC',false);
 
   -- Staking rewards (ingresos cripto pequeños)
-  FOR v_month IN 1..3 LOOP
+  FOR v_month IN 0..3 LOOP
     v_tx_id := gen_random_uuid();
     INSERT INTO transactions (id, user_id, type, occurred_at, category_id, description, fx_rate, fx_from_currency, fx_to_currency)
     VALUES (v_tx_id, u_sofia, 'income',

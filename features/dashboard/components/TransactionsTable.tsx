@@ -7,7 +7,6 @@ import {
   Bitcoin,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { Skeleton } from "@/core/components/ui/skeleton";
 import { Badge } from "@/core/components/ui/badge";
 import {
   Table,
@@ -19,13 +18,10 @@ import {
 } from "@/core/components/ui/table";
 import { cn } from "@/core/lib/shadcn/libs/utils";
 import { formatShortDate } from "@/features/dashboard/lib/formatters";
-import {
-  RECENT_TRANSACTIONS,
-  type TxType,
-} from "@/features/dashboard/lib/mock-data";
+import type { Transaction, TxType } from "@/features/dashboard/types";
 
 interface TransactionsTableProps {
-  loading?: boolean;
+  transactions: Transaction[];
 }
 
 const TX_ICON: Record<TxType, React.ElementType> = {
@@ -42,24 +38,8 @@ const TX_COLOR: Record<TxType, string> = {
   crypto: "text-amber-400",
 };
 
-export function TransactionsTable({ loading }: TransactionsTableProps) {
+export function TransactionsTable({ transactions }: TransactionsTableProps) {
   const t = useTranslations("dashboard.transactions");
-
-  if (loading) {
-    return (
-      <div className="bg-card border border-border p-4 flex flex-col gap-3">
-        <Skeleton className="h-3 w-40" />
-        {[1, 2, 3, 4].map((i) => (
-          <div key={i} className="flex justify-between gap-4">
-            <Skeleton className="h-3 w-20" />
-            <Skeleton className="h-3 flex-1" />
-            <Skeleton className="h-3 w-16" />
-            <Skeleton className="h-3 w-20" />
-          </div>
-        ))}
-      </div>
-    );
-  }
 
   return (
     <div className="bg-card border border-border flex flex-col">
@@ -86,7 +66,7 @@ export function TransactionsTable({ loading }: TransactionsTableProps) {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {RECENT_TRANSACTIONS.map((tx) => {
+          {transactions.map((tx) => {
             const Icon = TX_ICON[tx.type];
             const isPositive = tx.amount > 0;
 

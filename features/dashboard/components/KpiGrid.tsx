@@ -4,21 +4,21 @@ import { useTranslations } from "next-intl";
 import { KpiCard } from "./KpiCard";
 import { useCurrency } from "@/core/lib/currency-context";
 import { formatCurrency } from "@/features/dashboard/lib/formatters";
-import { KPI_DATA } from "@/features/dashboard/lib/mock-data";
+import type { KpiDataPoint } from "@/features/dashboard/types";
 
 interface KpiGridProps {
-  loading?: boolean;
+  data: Record<"netWorth" | "monthIncome" | "monthExpenses" | "monthFees", KpiDataPoint>;
 }
 
-export function KpiGrid({ loading }: KpiGridProps) {
+export function KpiGrid({ data }: KpiGridProps) {
   const t = useTranslations("dashboard.kpi");
   const { currency } = useCurrency();
 
   const cards = [
-    { label: t("netWorth"), ...KPI_DATA.netWorth },
-    { label: t("monthIncome"), ...KPI_DATA.monthIncome },
-    { label: t("monthExpenses"), ...KPI_DATA.monthExpenses },
-    { label: t("monthFees"), ...KPI_DATA.monthFees },
+    { label: t("netWorth"), ...data.netWorth },
+    { label: t("monthIncome"), ...data.monthIncome },
+    { label: t("monthExpenses"), ...data.monthExpenses },
+    { label: t("monthFees"), ...data.monthFees },
   ];
 
   return (
@@ -30,7 +30,6 @@ export function KpiGrid({ loading }: KpiGridProps) {
           value={formatCurrency(card.value, currency)}
           delta={card.delta}
           deltaLabel={t("vsPrevMonth")}
-          loading={loading}
         />
       ))}
     </div>

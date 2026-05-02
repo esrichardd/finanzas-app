@@ -2,11 +2,10 @@
 
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import { useTranslations } from "next-intl";
-import { Skeleton } from "@/core/components/ui/skeleton";
-import { EXPENSE_CATEGORIES } from "@/features/dashboard/lib/mock-data";
+import type { ExpenseCategory } from "@/features/dashboard/types";
 
 interface ExpenseDonutProps {
-  loading?: boolean;
+  categories: ExpenseCategory[];
 }
 
 const TOOLTIP_STYLE = {
@@ -17,19 +16,10 @@ const TOOLTIP_STYLE = {
   fontFamily: "var(--font-ibm-plex-mono)",
 };
 
-export function ExpenseDonut({ loading }: ExpenseDonutProps) {
+export function ExpenseDonut({ categories }: ExpenseDonutProps) {
   const t = useTranslations("dashboard.expenseDonut");
 
-  if (loading) {
-    return (
-      <div className="bg-card border border-border p-4 flex flex-col gap-3">
-        <Skeleton className="h-3 w-36" />
-        <Skeleton className="h-48 w-full" />
-      </div>
-    );
-  }
-
-  const total = EXPENSE_CATEGORIES.reduce((sum, c) => sum + c.value, 0);
+  const total = categories.reduce((sum, c) => sum + c.value, 0);
 
   return (
     <div className="bg-card border border-border p-4 flex flex-col gap-3">
@@ -39,7 +29,7 @@ export function ExpenseDonut({ loading }: ExpenseDonutProps) {
       <ResponsiveContainer width="100%" height={200}>
         <PieChart>
           <Pie
-            data={EXPENSE_CATEGORIES}
+            data={categories}
             cx="50%"
             cy="50%"
             innerRadius={55}
@@ -48,7 +38,7 @@ export function ExpenseDonut({ loading }: ExpenseDonutProps) {
             dataKey="value"
             strokeWidth={0}
           >
-            {EXPENSE_CATEGORIES.map((entry, index) => (
+            {categories.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={entry.fill} />
             ))}
           </Pie>
@@ -62,7 +52,7 @@ export function ExpenseDonut({ loading }: ExpenseDonutProps) {
         </PieChart>
       </ResponsiveContainer>
       <div className="grid grid-cols-2 gap-x-4 gap-y-1">
-        {EXPENSE_CATEGORIES.map((category) => (
+        {categories.map((category) => (
           <div key={category.name} className="flex items-center gap-1.5">
             <span
               className="w-2 h-2 shrink-0"
